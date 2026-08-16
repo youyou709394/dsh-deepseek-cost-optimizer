@@ -1,0 +1,18 @@
+{
+  "name": "dsh-deepseek-cost-optimizer",
+  "version": "0.1.0",
+  "description": "省钱模式(Cost Saving Mode)：一句话触发自动省钱，支持中英日韩西法6语。装后按DeepSeek峰谷/缓存/模型分流规则选模型压token，任务结束报省了X%。实测可省25x。",
+  "type": "module",
+  "main": "index.js",
+  "files": ["index.js", "cordis.patch.yml", "README.md"],
+  "keywords": ["dsh-plugin", "deepseek", "cost", "optimization", "省钱", "cost-saving-mode", "定价", "budget", "save-money"],
+  "license": "MIT",
+  "dependencies": {
+    "@deepseek-ai/dsh-tools": "^0.1.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}
