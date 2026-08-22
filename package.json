@@ -8,7 +8,7 @@
   "keywords": ["dsh-plugin", "deepseek", "cost", "optimization", "省钱", "cost-saving-mode", "定价", "budget", "save-money"],
   "license": "MIT",
   "dependencies": {
-    "@deepseek-ai/dsh-tools": "^0.1.0"
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.7"
   },
   "dsh": {
     "bundle": {
