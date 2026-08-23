@@ -146,7 +146,7 @@ export function apply(ctx) {
       可异步: { type: 'boolean', description: '是否可低谷时段异步跑(如批量/后台任务)。不传则按是否批量自动判断。' },
     },
     output: {
-      schema: { type: 'object' },
+      schema: { type: 'object', additionalProperties: true },
       render: (_args, value) => [{ type: 'text', text: value.saving_plan }],
     },
     async execute(args) {
@@ -180,11 +180,11 @@ ${plan.自动省钱动作.map(a => '  ✅ ' + a).join('\n')}
         type: 'array',
         required: true,
         description: 'token 用量记录数组，每项含 model(model名), ts(调用时间戳秒), input_tokens, output_tokens, cache_read_tokens(可选), cache_write_tokens(可选)',
-        items: { type: 'object' },
+        items: { type: 'object', additionalProperties: true },
       },
     },
     output: {
-      schema: { type: 'object' },
+      schema: { type: 'object', additionalProperties: true },
       render: (_args, value) => [{ type: 'text', text: JSON.stringify(value, null, 2) }],
     },
     async execute(args) {
@@ -204,7 +204,7 @@ ${plan.自动省钱动作.map(a => '  ✅ ' + a).join('\n')}
       可异步: { type: 'boolean', description: '是否可night/凌晨异步执行(可跑低谷时段省钱)' },
     },
     output: {
-      schema: { type: 'object' },
+      schema: { type: 'object', additionalProperties: true },
       render: (_args, value) => [{ type: 'text', text: '🎯 省钱建议:\n' + JSON.stringify(value, null, 2) }],
     },
     async execute(args) {
@@ -227,9 +227,8 @@ ${plan.自动省钱动作.map(a => '  ✅ ' + a).join('\n')}
     parameters: {
       calls: {
         type: 'array',
-        required: false,
         description: '可选，token用量记录(同cost_analyze)。若提供，会结合实际调用给出定制计划。',
-        items: { type: 'object' },
+        items: { type: 'object', additionalProperties: true },
       },
       batch_tasks: {
         type: 'array',
@@ -239,7 +238,7 @@ ${plan.自动省钱动作.map(a => '  ✅ ' + a).join('\n')}
       },
     },
     output: {
-      schema: { type: 'object' },
+      schema: { type: 'object', additionalProperties: true },
       render: (_args, value) => [{ type: 'text', text: value.plan }],
     },
     async execute(args) {
