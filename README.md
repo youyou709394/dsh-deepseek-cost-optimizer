@@ -56,10 +56,21 @@
 
 ## 🔧 安装
 
+> ⚠️ 本插件**托管在 GitHub，尚未发布到 npm registry**。所以安装时**必须写 `github:` 全名**；
+> 只写包名（`dsh-deepseek-cost-optimizer`）会报 `ERR_PNPM_FETCH_404 Not Found - registry.npmjs.org`。
+
 ```bash
-dsh plugin --profile demo add dsh-deepseek-cost-optimizer
+# 从 GitHub 安装（推荐，复制即用）
+dsh plugin --profile demo add github:youyou709394/dsh-deepseek-cost-optimizer
+
+# 启动
 dsh --profile demo
 ```
+
+- `add` 与 `install` 等价（`dsh plugin` 只是把参数转发给 pnpm），下面这条同样可用：
+  `dsh plugin --profile demo install github:youyou709394/dsh-deepseek-cost-optimizer`
+- 也可以直接用本地目录：`dsh plugin --profile demo add /path/to/dsh-deepseek-cost-optimizer`
+- 装机验证：`dsh plugin --profile demo list` 与 `dsh --profile demo --dump-config | grep cost-optimizer`
 
 然后在 Harness 里直接说（任意语言）：
 - "用省钱模式翻译这10个文件"
