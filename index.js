@@ -43,12 +43,15 @@ const TRIGGERS = {
   'Français':['mode économie', 'économiser', 'mode économique', 'économie'],
 }
 
+// 去音标符号：让「mode economie」也能命中「mode économie」（用户常不打重音符号）
+const stripAccents = (s) => (s || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+
 function detectLang(text) {
   if (!text) return { recognized: false, lang: null }
-  const lower = text.toLowerCase()
+  const lower = stripAccents(text.toLowerCase())
   for (const [lang, words] of Object.entries(TRIGGERS)) {
     for (const w of words) {
-      if (lower.includes(w.toLowerCase())) return { recognized: true, lang }
+      if (lower.includes(stripAccents(w.toLowerCase()))) return { recognized: true, lang }
     }
   }
   return { recognized: false, lang: null }
@@ -232,8 +235,7 @@ ${plan.自动省钱动作.map(a => '  ✅ ' + a).join('\n')}
       },
       batch_tasks: {
         type: 'array',
-        required: true,
-        description: '你有哪些"量大/机械/可异步"的批量任务需要跑(如课件制作/批量翻译/批量检索)。每项给任务描述。',
+        description: '你有哪些"量大/机械/可异步"的批量任务需要跑(如课件制作/批量翻译/批量检索)。每项给任务描述。可选：只提供 calls 做调用分析时可不传。',
         items: { type: 'string' },
       },
     },

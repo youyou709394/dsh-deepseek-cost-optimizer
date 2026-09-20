@@ -94,6 +94,12 @@ dsh --profile demo
 - 自定义定价：改 `index.js` 里 `PRICING` 常量
 - 接入真实账单：把任意 OpenAI 兼容客户端的 usage 日志喂给 `cost_analyze`
 
+## 📝 更新记录
+- **v0.1.3** — 修 `saving_plan`：`batch_tasks` 由必填改为可选（之前只传 `calls` 做调用分析会被 schema 直接拒绝）。多语言触发词改为**忽略音标符号**：`mode economie` / `modo economico` 这类不打重音的写法现在也能命中 Français/Español。
+- **v0.1.2** — README 修正安装命令（本插件**未发布到 npm**，必须用 `github:` 全名安装）。
+- **v0.1.1** — 修 schema：`additionalProperties` + 去掉 `required:false`，兼容真实 dsh-tools 严格校验。
+- **v0.1.0** — 首发。
+
 ## 📜 License
 
 MIT
